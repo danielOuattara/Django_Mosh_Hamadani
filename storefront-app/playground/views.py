@@ -6,6 +6,12 @@ from django.http import HttpResponse
 # requests handler
 
 
+def calculate():
+    x = 1
+    y = 2
+    return x
+
+
 def say_hello(request):
     """
     Here we can do anything backend logic:
@@ -19,6 +25,10 @@ def say_hello(request):
     # return render(request, 'hello.html')
 
     # -> update to include a context while rendering hello.html
+
+    """Starting debugging here"""
+
+    x = calculate()
     return render(
         request,
         template_name='hello.html',

@@ -292,3 +292,116 @@ def say_hello(request):
   ```
 
 ## Debugging Django Application in VS Code
+
+- click on the debug button.
+- click to create a `launch.py`
+- select the application to work with, if many applications open at the same time.
+- answer all the questions
+- locate the `manage.py` for the application to debug
+- locate the `launch.json` as follow to run on port `9000`:
+
+```json
+  {
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Python Debugger: Django",
+      "type": "debugpy",
+      "request": "launch",
+      "args": ["runserver", "9000"],
+      "django": true,
+      "autoStartBrowser": false,
+      "program": "${workspaceFolder}/storefront-app/manage.py"
+    }
+  ]
+
+}
+
+```
+
+- update as follow:
+
+```python
+def say_hello(request):
+    """
+    Here we can do anything backend logic:
+    - CRUD from a database
+    - send email
+    - etc...
+    """
+    # return HttpResponse("Hello Django world")
+
+    # -> update to render hello.html
+    # return render(request, 'hello.html')
+
+    # -> update to include a context while rendering hello.html
+
+    """Starting debugging here"""
+    x = 1
+    y = 2
+    return render(
+        request,
+        template_name='hello.html',
+        context={"name": "John Doe", "country": "China"})
+
+```
+
+- add break point in front of `x = 1`
+- start the server if not started
+- navigate to `127.0.0.1:9000/playground/hello`
+- click on `step over` `f10` to continue the flow of debugging
+- one again update `storefront-app/playground/views.py`as follow:
+
+```python
+from django.shortcuts import render
+from django.http import HttpResponse
+
+# Create your views here.
+# a view :  request --> response
+# requests handler
+
+
+def calculate():
+    x = 1
+    y = 2
+    return x
+
+
+def say_hello(request):
+    """
+    Here we can do anything backend logic:
+    - CRUD from a database
+    - send email
+    - etc...
+    """
+    # return HttpResponse("Hello Django world")
+
+    # -> update to render hello.html
+    # return render(request, 'hello.html')
+
+    # -> update to include a context while rendering hello.html
+
+    """Starting debugging here"""
+
+    x = calculate()
+    return render(
+        request,
+        template_name='hello.html',
+        context={"name": "John Doe", "country": "China"})
+
+```
+
+- place a breakpoint at `x = calculate()`
+- then `step into` t o see what happens in the calculate function
+
+##  Using Django Debug Toolbar
+
+- duckduckgo for `django debug toolbar`
+- install it : `python -m pip install django-debug-toolbar` OR `pipenv install django-debug-toolbar`
+
+- read the documentation for the configuration from `https://django-debug-toolbar.readthedocs.io/en/latest/installation.html`
+
+## Building data model
