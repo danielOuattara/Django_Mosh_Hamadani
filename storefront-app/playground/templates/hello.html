@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hello</title>
+  </head>
+  <body>
+    <h1>Hello Django world</h1>
+
+    {% if name %}
+
+    <h2>The context show {{name}} as user</h2>
+    <p>{{name}} was born in {{country}}</p>
+
+    {% else %}
+
+    <h2>The context is not provided</h2>
+
+    {% endif %}
+  </body>
+</html>
