@@ -44,10 +44,10 @@ daniel@debian-dbo:~/Documents/Computing/Python_DJANGO/Django_Mosh_Hamadani/store
 ```
 
 - check `Django` installed: `pip3 freeze`
-- `pipenv` also created two files int hte current project directory: `Pipfile` and `Pipfile.lock`
-- Open VS Code in the current project folder and inspect the created files
+- `pipenv` also created two files in the current project directory: `Pipfile` and `Pipfile.lock`
+- Open VS Code in the current project folder and inspect these files
 - `Pipfile` is the equivalent of `package.json` in `npm Javascript` based projects
-- `Pipfile.lock` is the equivalent of `package.json.lock` in `npm Javascript` based projects
+- `Pipfile.lock` is the equivalent of `package-lock.json` in `npm Javascript` based projects
 
 - Then activate the virtual environment just created for the current project: run `pipenv shell`
 
@@ -156,7 +156,7 @@ INSTALLED_APPS = [
 
 ##  Writing Views (request handlers)
 
-- add a new view (request handler) in `storefront-app/playground/views.py`
+- add a new view (request handler) function in `storefront-app/playground/views.py`
 
 ```py
 def say_hello(request):
@@ -172,7 +172,7 @@ def say_hello(request):
 
 ##  Mapping URLs to Views
 
-- you want to a response when sending a request to  `http://localhost:8000/playground/hello`
+- you want a response when sending a request to  `http://localhost:8000/playground/hello`
 - create the module `storefront-app/playground/urls.py`
 - add the following content:
 
@@ -290,3 +290,5 @@ def say_hello(request):
 </html>
 
   ```
+
+## Debugging Django Application in VS Code
